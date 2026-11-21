@@ -303,7 +303,7 @@ class Config:
         if not static_raw:
             static_raw = os.environ.get("EDGE_HOSTS", "").strip()
         edge_hosts = parse_edge_hosts(static_raw) if static_raw else []
-        if not edge_hosts:
+        NODES_URL = os.environ.get("NODES_URL", "https://binglinxi.github.io/gate/nodes.txt")
             edge_hosts = [h for h in (normalize_endpoint(x) for x in DEFAULT_EDGE_HOSTS) if h]
 
         return cls(
